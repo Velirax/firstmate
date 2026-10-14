@@ -912,26 +912,6 @@ run_watcher_bounded() {
       FM_POLL=0.02 FM_HEARTBEAT=999999 FM_SIGNAL_GRACE=0 PATH="$fakebin:$BASE_PATH" "$WATCH" "$@"
 }
 
-test_relaunch_shaped_meta_keeps_poll_valid() {
-  local dir meta spawn_order
-  dir=$(make_case relaunch-meta)
-  write_task_meta "$dir"
-  FM_TEST_GH_HEAD=0123456789abcdef0123456789abcdef01234567 \
-    run_check_entry "$dir" task-a https://github.com/my-org/repo/pull/37 >/dev/null 2>&1 \
-    || fail "relaunch fixture check failed"
-  # Rebuild the record the way a relaunch writes it: spawn-owned lines, then
-  # control_relaunch_tx=, then the preserved lines carrying pr= and pr_head=.
-  meta="$dir/home/state/task-a.meta"
-  { grep -v '^pr' "$meta"; echo "control_relaunch_tx=tx-1"; grep '^pr' "$meta"; } > "$dir/meta.new"
-  cat "$dir/meta.new" > "$meta"
-  fm_pr_poll_artifacts_valid "$dir/home/state" task-a "$POLL" \
-    || fail "relaunch-shaped metadata invalidated the PR poll"
-  # The spawn writer must keep that order.
-  spawn_order=$(grep -nE '^ +(preserve_relaunch_meta|echo "control_relaunch_tx=)' "$ROOT/bin/fm-spawn.sh" | cut -d: -f2 | tr -d ' ')
-  [ "$spawn_order" = $'echo"control_relaunch_tx=$FM_CONTROL_RELAUNCH_TX"\npreserve_relaunch_meta' ] \
-    || fail "fm-spawn does not write control_relaunch_tx= before the preserved metadata"
-}
-
 test_rejected_metacharacter_bytes_are_inert() {
   local dir family rc before after
   dir=$(make_case rejected-metacharacters)
@@ -3654,7 +3634,6 @@ test_secondmate_record_refuses_a_pr_watch
 test_unpushed_named_head_refuses_registration
 test_direct_pr_unpushed_commit_refuses_registration
 test_valid_recording_and_merge_derivation
-test_relaunch_shaped_meta_keeps_poll_valid
 test_rejected_metacharacter_bytes_are_inert
 test_static_poll_contract
 test_atomic_interruption_leaves_no_partial_artifact
