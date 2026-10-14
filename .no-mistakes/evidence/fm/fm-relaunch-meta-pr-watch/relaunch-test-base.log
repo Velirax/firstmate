@@ -1,0 +1,20 @@
+ok - fm-control removes the dialog file after exit and after relaunch
+ok - fm-control exit removes the dialog file before it releases the control lock
+not ok - relaunch left PR metadata the merge poll cannot parse (off):
+window=fmses:fm-rl-pr-off
+endpoint_task_id=rl-pr-off
+worktree=/tmp/fm-control-relaunch.g41p3c/pr-meta-off-17501/wt
+project=/tmp/fm-control-relaunch.g41p3c/pr-meta-off-17501/proj
+harness=claude
+kind=ship
+mode=no-mistakes
+yolo=off
+branch=fm/rl-pr-off
+tasktmp=/tmp/fm-rl-pr-off
+model=default
+effort=default
+busy_gen=g1791982188.891483.8664
+spawn_gen=s1791982188.891120.31649
+pr=https://github.com/example/repo/pull/37
+pr_head=0123456789abcdef0123456789abcdef01234567
+control_relaunch_tx=890727.20261014T124947Z.29559

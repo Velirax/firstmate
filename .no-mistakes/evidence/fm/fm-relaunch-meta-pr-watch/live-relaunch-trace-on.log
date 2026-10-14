@@ -1,0 +1,48 @@
+### HEAD: real fm-control.sh relaunch, trace context ON (config/trace-context + session-effective record)
+896234 on
+--- meta before
+window=primary:fm-rlpr2
+endpoint_task_id=rlpr2
+worktree=/home/velkata/.treehouse/demo-e82d16/2/demo
+project=/tmp/fm-lab.ctAPnm/projects/demo
+harness=claude
+kind=ship
+mode=no-mistakes
+yolo=off
+branch=fm/rlpr2
+tasktmp=/tmp/fm-rlpr2
+model=default
+effort=default
+busy_gen=g1791982319.911943.17595
+spawn_gen=s1791982319.911428.19181
+control_relaunch_tx=911192.20261014T125158Z.13432
+pr=https://github.com/example/repo/pull/37
+pr_head=0123456789abcdef0123456789abcdef01234567
+fm_pr_poll_artifacts_valid: VALID (pr=https://github.com/example/repo/pull/37)
+fm_pr_metadata_identity_parse: ok
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /tmp/fm-lab.ctAPnm
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /tmp/fm-lab.ctAPnm
+WARNING: watcher still down (same stale episode; last beat: never, grace 300s) - full banner already printed this episode.
+relaunched rlpr2 harness=claude from=claude model=default effort=default backend=tmux endpoint=primary:fm-rlpr2 worktree=/home/velkata/.treehouse/demo-e82d16/2/demo
+relaunch rc=0
+--- meta after
+window=primary:fm-rlpr2
+endpoint_task_id=rlpr2
+worktree=/home/velkata/.treehouse/demo-e82d16/2/demo
+project=/tmp/fm-lab.ctAPnm/projects/demo
+harness=claude
+kind=ship
+mode=no-mistakes
+yolo=off
+branch=fm/rlpr2
+tasktmp=/tmp/fm-rlpr2
+model=default
+effort=default
+busy_gen=g1791982337.915086.24701
+spawn_gen=s1791982337.914594.15973
+control_relaunch_tx=914363.20261014T125216Z.10079
+traceparent=00-e2cf99c3c4c6af6cfb00d6df04e3aa70-f6de0bdcdb867fd9-01
+pr=https://github.com/example/repo/pull/37
+pr_head=0123456789abcdef0123456789abcdef01234567
+fm_pr_poll_artifacts_valid: VALID (pr=https://github.com/example/repo/pull/37)
+fm_pr_metadata_identity_parse: ok

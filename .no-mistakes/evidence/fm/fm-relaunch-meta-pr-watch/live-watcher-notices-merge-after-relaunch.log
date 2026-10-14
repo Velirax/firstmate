@@ -1,0 +1,7 @@
+### HEAD: real bin/fm-watch.sh sweep (FM_CHECK_INTERVAL=0, gh stand-in reports MERGED) after two real relaunches of rlpr2
+--- meta at sweep (see live-relaunch-trace-on.log "meta after"; unchanged)
+--- watcher stdout
+check: /tmp/fm-lab.ctAPnm/state/rlpr2.check.sh: merged
+watch rc=0
+--- wake queue
+1791982381	2	check	merged-rlpr2-https://github.com/example/repo/pull/37	check: merge landed: rlpr2 https://github.com/example/repo/pull/37 external
